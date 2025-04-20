@@ -29,7 +29,6 @@ INSTALLED_APPS = [
     'rest_framework',
     # My apps
     'donations.apps.DonationsConfig',
-    'api.apps.ApiConfig',
 ]
 
 MIDDLEWARE = [

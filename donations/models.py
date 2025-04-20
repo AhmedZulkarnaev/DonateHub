@@ -5,6 +5,22 @@ User = get_user_model()
 
 
 class Collect(models.Model):
+    """
+    Модель для хранения информации о сборе средств.
+
+    Поля:
+    - author: Пользователь, создавший сбор.
+    - title: Название сбора.
+    - reason: Причина создания (например, День рождения, Свадьба или Другое).
+    - description: Дополнительное описание сбора.
+    - cover_image: Изображение-обложка, сохраняемое в 'collect_covers/'.
+    - goal_amount: Целевая сумма (опционально, если сбор бесконечный).
+    - is_infinite: Флаг, указывающий на бесконечный сбор.
+    - collected_amount: Текущая сумма собранных средств.
+    - donators_count: Количество уникальных донаторов.
+    - ends_at: Дата и время завершения сбора.
+    - created_at: Дата и время создания записи.
+    """
     class Reason(models.TextChoices):
         BIRTHDAY = "birthday", "День рождения"
         WEDDING = "wedding", "Свадьба"
@@ -25,7 +41,7 @@ class Collect(models.Model):
         max_digits=10, decimal_places=2, default=0
     )
     donators_count = models.PositiveIntegerField(default=0)
-    ends_at = models.DateTimeField()
+    ends_at = models.DateTimeField(null=True, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -34,6 +50,15 @@ class Collect(models.Model):
 
 
 class Payment(models.Model):
+    """
+    Модель платежа для сбора средств.
+
+    Поля:
+    - collect: Сбор средств, к которому относится платёж.
+    - donator: Пользователь, осуществивший платёж.
+    - amount: Сумма платежа.
+    - created_at: Дата и время создания платежа.
+    """
     collect = models.ForeignKey(
         Collect, on_delete=models.CASCADE, related_name="payments"
     )

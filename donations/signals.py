@@ -6,6 +6,11 @@ from django.db.models import Sum
 
 @receiver(post_save, sender=Payment)
 def update_collect_stats_on_payment(sender, instance, created, **kwargs):
+    """
+    Обновляет статистику Collect при создании нового Payment:
+    - Суммирует все платежи.
+    - Считает уникальных донаторов.
+    """
     if not created:
         return
 
