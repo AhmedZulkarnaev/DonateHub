@@ -10,7 +10,7 @@ def cache_response(key_prefix, timeout=60 * 15):
     def decorator(view_method):
         @wraps(view_method)
         def _wrapped_view(self, request, *args, **kwargs):
-            cache_key = f"{key_prefix}_{request.query_params}"
+            cache_key = f"{key_prefix}_{request.get_full_path()}"
             if request.method == 'GET':
                 cached_data = cache.get(cache_key)
                 if cached_data is not None:
