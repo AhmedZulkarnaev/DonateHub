@@ -6,7 +6,7 @@ class CacheResponseMixin:
     Миксин для автоматического кэширования и инвалидации
     """
     CACHE_KEY_PREFIX = None
-    CACHE_TIMEOUT = 60 * 15
+    CACHE_TIMEOUT = 60 * 5
 
     @classmethod
     def invalidate_class_cache(cls):
