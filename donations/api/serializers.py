@@ -15,10 +15,7 @@ class PaymentSerializer(serializers.HyperlinkedModelSerializer):
     - В create() автоматически устанавливается текущий пользователь как донор
     """
     url = serializers.HyperlinkedIdentityField(view_name='payment-detail')
-    donator = serializers.HyperlinkedRelatedField(
-        view_name='user-detail',
-        read_only=True
-    )
+    donator = serializers.StringRelatedField(read_only=True)
     collect = serializers.HyperlinkedRelatedField(
         view_name='collect-detail',
         queryset=Collect.objects.all()
@@ -49,10 +46,7 @@ class CollectSerializer(serializers.HyperlinkedModelSerializer):
     - Реализована валидация бизнес-правил
     """
     url = serializers.HyperlinkedIdentityField(view_name='collect-detail')
-    author = serializers.HyperlinkedRelatedField(
-        view_name='user-detail',
-        read_only=True
-    )
+    author = serializers.StringRelatedField(read_only=True)
     cover_image = serializers.ImageField(required=False)
     payments = PaymentSerializer(many=True, read_only=True)
 
