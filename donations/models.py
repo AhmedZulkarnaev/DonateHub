@@ -34,7 +34,9 @@ class Collect(models.Model):
     title = models.CharField(max_length=255)
     reason = models.CharField(max_length=20, choices=Reason.choices)
     description = models.TextField(blank=True)
-    cover_image = models.ImageField(upload_to="collect_covers/")
+    cover_image = models.ImageField(
+        upload_to="collect_covers/", blank=True, null=True
+    )
     goal_amount = models.DecimalField(
         max_digits=MAX_DIGITS,
         decimal_places=DECIMAL_PLACES,

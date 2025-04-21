@@ -2,4 +2,3 @@ CACHE_KEY_PREFIX = 'collects'
 
 MAX_DIGITS = 10
 DECIMAL_PLACES = 2
-
