@@ -22,7 +22,7 @@ __pycache__/
 *.env
 
 # dotenv
-docker/.env
+infra/.env
 
 # Virtual environments
 venv/

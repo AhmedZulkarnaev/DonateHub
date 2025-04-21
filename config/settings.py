@@ -3,11 +3,11 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-dotenv_path = Path("../infra/.env")
-load_dotenv(dotenv_path=dotenv_path)
-
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+dotenv_path = BASE_DIR / '.env'
+load_dotenv(dotenv_path=dotenv_path)
 
 SECRET_KEY = os.getenv("SECRET_KEY", "key")
 
@@ -65,13 +65,13 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("POSTGRES_DB", "django"),
-        "USER": os.getenv("POSTGRES_USER", "django"),
-        "PASSWORD": os.getenv("POSTGRES_PASSWORD", ""),
-        "HOST": os.getenv("DB_HOST", ""),
-        "PORT": os.getenv("DB_PORT", 5432)
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST', '127.0.0.1'),
+        'PORT': os.getenv('DB_PORT', '5432'),
     }
 }
 
@@ -116,3 +116,15 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake',
+        'TIMEOUT': 60 * 15,
+        'OPTIONS': {
+            'MAX_ENTRIES': 1000
+        }
+    }
+}

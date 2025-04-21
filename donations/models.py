@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 
+from .constants import MAX_DIGITS, DECIMAL_PLACES
+
 User = get_user_model()
 
 
@@ -34,11 +36,14 @@ class Collect(models.Model):
     description = models.TextField(blank=True)
     cover_image = models.ImageField(upload_to="collect_covers/")
     goal_amount = models.DecimalField(
-        max_digits=10, decimal_places=2, null=True, blank=True
+        max_digits=MAX_DIGITS,
+        decimal_places=DECIMAL_PLACES,
+        null=True,
+        blank=True
     )
     is_infinite = models.BooleanField(default=False)
     collected_amount = models.DecimalField(
-        max_digits=10, decimal_places=2, default=0
+        max_digits=MAX_DIGITS, decimal_places=DECIMAL_PLACES, default=0
     )
     donators_count = models.PositiveIntegerField(default=0)
     ends_at = models.DateTimeField(null=True, blank=True)

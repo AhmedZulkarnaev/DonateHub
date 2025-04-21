@@ -4,7 +4,7 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
-from api.views import CollectViewSet, PaymentViewSet
+from donations.api.views import CollectViewSet, PaymentViewSet
 
 router = DefaultRouter()
 router.register(r'collects', CollectViewSet)
