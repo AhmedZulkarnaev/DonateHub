@@ -1,7 +1,7 @@
 from django.urls import path, include, re_path
 from rest_framework.routers import DefaultRouter
 
-from donations.api.views import CollectViewSet, PaymentViewSet
+from .views import CollectViewSet, PaymentViewSet
 from config.urls import schema_view
 
 router = DefaultRouter()

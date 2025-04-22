@@ -12,7 +12,6 @@ click-repl==0.3.0
 cryptography==44.0.2
 defusedxml==0.7.1
 Django==5.2
-django_celery_results==2.6.0
 djangorestframework==3.16.0
 djangorestframework_simplejwt==5.5.0
 djoser==2.3.1

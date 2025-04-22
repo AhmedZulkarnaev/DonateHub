@@ -17,7 +17,7 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include("donations.urls")),
+    path("", include("donations.api.urls")),
     # Регистрация
     path("auth/", include("djoser.urls")),
     path("auth/", include("djoser.urls.jwt")),
