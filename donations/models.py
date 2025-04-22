@@ -23,25 +23,19 @@ class Collect(models.Model):
     - ends_at: Дата и время завершения сбора.
     - created_at: Дата и время создания записи.
     """
+
     class Reason(models.TextChoices):
         BIRTHDAY = "birthday", "День рождения"
         WEDDING = "wedding", "Свадьба"
         OTHER = "other", "Другое"
 
-    author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="collects"
-    )
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="collects")
     title = models.CharField(max_length=255)
     reason = models.CharField(max_length=20, choices=Reason.choices)
     description = models.TextField(blank=True)
-    cover_image = models.ImageField(
-        upload_to="collect_covers/", blank=True, null=True
-    )
+    cover_image = models.ImageField(upload_to="collect_covers/", blank=True, null=True)
     goal_amount = models.DecimalField(
-        max_digits=MAX_DIGITS,
-        decimal_places=DECIMAL_PLACES,
-        null=True,
-        blank=True
+        max_digits=MAX_DIGITS, decimal_places=DECIMAL_PLACES, null=True, blank=True
     )
     is_infinite = models.BooleanField(default=False)
     collected_amount = models.DecimalField(
@@ -51,6 +45,7 @@ class Collect(models.Model):
     ends_at = models.DateTimeField(null=True, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
+    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return f"{self.title} ({self.author})"
@@ -66,12 +61,11 @@ class Payment(models.Model):
     - amount: Сумма платежа.
     - created_at: Дата и время создания платежа.
     """
+
     collect = models.ForeignKey(
         Collect, on_delete=models.CASCADE, related_name="payments"
     )
-    donator = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="payments"
-    )
+    donator = models.ForeignKey(User, on_delete=models.CASCADE, related_name="payments")
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     created_at = models.DateTimeField(auto_now_add=True)
 
