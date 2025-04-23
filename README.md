@@ -19,7 +19,7 @@
 ## 🐳 Быстрый старт (Docker)
 
 ```bash
-git clone https://github.com/yourname/donatehub.git
+git clone https://github.com/AhmedZulkarnaev
 cd donatehub
 cp .env.example .env  # создай файл конфигурации
 ```
