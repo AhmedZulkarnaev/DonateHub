@@ -89,10 +89,5 @@ docker-compose exec web python manage.py generate_mock_data --users=50 --collect
 
 ## 👤 Автор
 
-> Made with by [Твоё Имя](https://github.com/AhmedZulkarnaev)
+> Made with by [Ахмед](https://github.com/AhmedZulkarnaev)
 
----
-
-## 🪪 Лицензия
-
-Проект распространяется под лицензией [MIT](LICENSE)
