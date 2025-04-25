@@ -11,7 +11,7 @@
 - **Celery + Redis** — асинхронные задачи
 - **DRF + drf-yasg** — API и документация Swagger
 - **Docker** — контейнеризация проекта
-- **JWT (SimpleJWT)** — аутентификация
+- **JWT (Djoser)** — аутентификация
 - **SMTP** — email-уведомления
 
 ---
