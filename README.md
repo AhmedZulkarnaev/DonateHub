@@ -41,8 +41,8 @@ docker-compose exec web python manage.py createsuperuser
 ## 🔑 Авторизация
 
 JWT-токены:
-- Получить токен: `POST /api/token/`
-- Обновить токен: `POST /api/token/refresh/`
+- Получить токен: `POST auth/jwt/create/`
+- Обновить токен: `POST auth/jwt/refresh/`
 
 ---
 
